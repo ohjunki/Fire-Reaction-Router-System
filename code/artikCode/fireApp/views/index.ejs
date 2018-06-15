@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>화재 경보</title>
+    <!-- Bootstrap core CSS -->
+    <link href="stylesheets/bootstrap.css" rel="stylesheet">
+    <link href="stylesheets/starter-template.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault" >
+        <ul class="navbar-nav mr-auto"  >
+          <li class="nav-item active">
+            <a class="nav-link" href="#">화재현황 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">건물구조도</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">길찾기</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="starter-template">
+        <h1>긴급 화재 현황 보고</h1>
+        <p class="lead">백화점에서 화재로 추정되는 신호가 감지되었습니다. <br> 현재 화재 진행 상황은 아래와 같습니다.<br>고객 여러분께서는 화재현황을 참고하여 빠르게 화재에 대처하시기 바랍니다.</p>
+      </div>
+    </div><!-- /.container -->
+    
+    <div class="card text-center">
+      <div class="card-header">
+        1층
+      </div>
+      <div class="card-body">
+        <div class="card-columns">
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+              <div class="card-header">위치 : 중앙처리센터</div>
+              <div class="card-body">
+                <h5 class="card-title">레벨 : 0</h5>
+                <p class="card-text">
+                온도 : 25<br>
+                습도 : 40.2<br>
+                불꽃유무 : 없음<br>
+                프로판가스 : 163.00<br>
+                일산화탄소: 163.00<br>
+                </p>
+              </div>
+            </div>
+			<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+              <div class="card-header">위치 : 중앙처리센터</div>
+              <div class="card-body">
+                <h5 class="card-title">레벨 : 2</h5>
+                <p class="card-text">
+                온도 : 55<br>
+                습도 : 30.2<br>
+                불꽃유무 : 있음<br>
+                프로판가스 : 562.10<br>
+                일산화탄소: 450.82<br>
+                </p>
+              </div>
+            </div>
+
+           <% for( i=0; i<list.length; i++ ){ %>
+               <% if( list[i]['level'] == "0" ){ %>
+                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                <%}else if( list[i]['level'] == "1" ){ %>
+                <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+                <%}else if( list[i]['level'] == "2" ){ %>
+                <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                <%}%>
+                  <div class="card-header">위치 : Arduino Senser</div>
+                  <div class="card-body">
+                    <h5 class="card-title">레벨 : <%=list[i]['level']%></h5>
+                    <p class="card-text">
+                    온도 : <%=list[i]['temp']%><br>
+                    습도 : <%=list[i]['hum']%><br>
+					<% if( list[i]['flame'] == 1 ){%>	
+                    불꽃유무 : 없음<br>
+					<% }else {%>
+                    불꽃유무 : 있음<br>
+					<%}%>
+                    프로판가스 : <%=list[i]['gastwo']%><br>
+                   	일산화탄소 : <%=list[i]['gasseven']%><br>
+                    </p>
+                  </div>
+                </div>
+            <%}%>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="javascripts/bootstrap.js"></script>
+  </body>
+</html>

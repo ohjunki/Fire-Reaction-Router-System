@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>화재 경보</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../public/stylesheets/bootstrap.css" rel="stylesheet">
+    <link href="../public/stylesheets/starter-template.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top" >
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault" >
+        <ul class="navbar-nav mr-auto"  >
+          <li class="nav-item active">
+            <a class="nav-link" href="#">화재현황 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">건물구조도</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">길찾기</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="starter-template">
+        <h1>긴급 화재 현황 보고</h1>
+        <p class="lead">백화점에서 화재로 추정되는 신호가 감지되었습니다. <br> 현재 화재 진행 상황은 아래와 같습니다.<br>고객 여러분께서는 화재현황을 참고하여 빠르게 화재에 대처하시기 바랍니다.</p>
+      </div>
+    </div><!-- /.container -->
+    
+    <div class="card text-center">
+      <div class="card-header">
+        1층
+      </div>
+      <div class="card-body">
+        <div class="card-columns">
+           <% for( var i=0; i<list.length; i++ ) %>
+                <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                  <div class="card-header"><%=list[i]['id']</div>
+                  <div class="card-body">
+                    <h5 class="card-title">위치 : <%=list[i]['location']%></h5>
+                    <p class="card-text">
+                    온도 : <%=list[i]['temp']%><br>
+                    습도 : <%=list[i]['hum']%><br>
+                    불꽃쎄기 : <%=list[i]['flame']%><br>
+                    가스2 : <%=list[i]['gastwo']%><br>
+                    가스7 : <%=list[i]['gasseven']%><br>
+                    </p>
+                  </div>
+                </div>
+            <%}%>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="../public/javascripts/bootstrap.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../public/javascripts/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
